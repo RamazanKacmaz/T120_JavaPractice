@@ -106,15 +106,107 @@ public class T120_WiseMarket {
     }
     public static void manav() {
         System.out.println("Manav Reyonuna Hoşgeldiniz");
-        girisEkrani();
+        System.out.println("Lütfen alacağınız ürün kodunu giriniz:\n71-Muz - 60₺\n72-Patates - 25₺\n73-Elma - 49₺\n74-Soğan - 20₺\n75-Domates - 39₺\n76-Ananas - 59₺ ");
+        while(!ekUrun){
+            urunKodu= scan.nextInt();
+            if (urunKodu>=71&&urunKodu<=76){
+                System.out.println("Kaç kg alacaksınız?");
+                urunMiktari= scan.nextInt();
+                switch (urunKodu){
+                    case 71:
+                        urunAdi="Muz";
+                        urunFiyati=60;
+                        System.out.println(urunMiktari+" kg "+urunAdi+" fiyatı: "+urunFiyati*urunMiktari+" TL'dir");
+                        break;
+                    case 72:
+                        urunAdi="Patates";
+                        urunFiyati=25;
+                        System.out.println((urunMiktari+" kg "+urunAdi+" fiyatı: "+urunFiyati*urunMiktari+" TL'dir"));
+                        break;
+                    case 73:
+                        urunAdi="Elma";
+                        urunFiyati=49;
+                        System.out.println((urunMiktari+" kg "+urunAdi+" fiyatı: "+urunFiyati*urunMiktari+" TL'dir"));
+                        break;
+                    case 74:
+                        urunAdi="Soğan";
+                        urunFiyati=20;
+                        System.out.println((urunMiktari+" kg "+urunAdi+" fiyatı: "+urunFiyati*urunMiktari+" TL'dir"));
+                        break;
+                    case 75:
+                        urunAdi="Domates";
+                        urunFiyati=39;
+                        System.out.println((urunMiktari+" kg "+urunAdi+" fiyatı: "+urunFiyati*urunMiktari+" TL'dir"));
+                        break;
+                    case 76:
+                        urunAdi="Ananas";
+                        urunFiyati=59;
+                        System.out.println((urunMiktari+" kg "+urunAdi+" fiyatı: "+urunFiyati*urunMiktari+" TL'dir"));
+                        break;
+                }
+                urunFiyati=urunFiyati*urunMiktari;
+                toplam+=urunFiyati;
+                System.out.println("Oluşan Sepet Tutarı: "+toplam);
+                sepet+=urunAdi+" : "+urunFiyati+" Tl \n";
+                System.out.println("Başka ürün almak isterseniz kodunu giriniz. Ana menüye dönmek için 0 tuşuna basınız.");
+            } else if (urunKodu==0) {
+
+                girisEkrani();
+
+            }
+
+
+        }
+
     }
 
     public static void market() {
         System.out.println("Market Reyonuna Hoşgeldiniz");
-        girisEkrani();
+        System.out.println("Lütfen satın almak istediğiniz Ürün Kodunu giriniz:\n81-Nutella - 103₺\n82-Ekmek - 8₺\n83-Yumurta - 76₺\n84-Yoğurt - 29₺ ");
+        while(!ekUrun){
+            urunKodu= scan.nextInt();
+            if (urunKodu>=81&&urunKodu<=84){
+                System.out.println("Kaç kg/adet alacaksınız?");
+                urunMiktari= scan.nextInt();
+                switch (urunKodu){
+                    case 81:
+                        urunAdi="Nutella";
+                        urunFiyati=103;
+                        System.out.println(urunMiktari+" kg "+urunAdi+" fiyatı: "+urunFiyati*urunMiktari+" TL'dir");
+                        break;
+                    case 82:
+                        urunAdi="Ekmek";
+                        urunFiyati=8;
+                        System.out.println(urunMiktari+" kg "+urunAdi+" fiyatı: "+urunFiyati*urunMiktari+" TL'dir");
+                        break;
+                    case 83:
+                        urunAdi="Yumurta";
+                        urunFiyati=76;
+                        System.out.println(urunMiktari+" kg "+urunAdi+" fiyatı: "+urunFiyati*urunMiktari+" TL'dir");
+                        break;
+                    case 84:
+                        urunAdi="Yoğurt";
+                        urunFiyati=29;
+                        System.out.println(urunMiktari+" kg "+urunAdi+" fiyatı: "+urunFiyati*urunMiktari+" TL'dir");
+                        break;
+                }
+                urunFiyati=urunMiktari*urunFiyati;
+                toplam+=urunFiyati;
+                System.out.println("Oluşan Sepet Tutarı: "+toplam);
+                sepet+=urunAdi+" : "+urunFiyati+" TL ";
+                System.out.println("Başka ürün almak isterseniz kodunu giriniz. Ana menüye dönmek için 0 tuşuna basınız.");
+            } else if (urunKodu==0) {
+                girisEkrani();
+            }
+        }
+
     }
 
     public static void fisYazdir() {
+        /*
+        ÖDEV: Müşteriden ödediği miktarı alıp sisteme giren ve verdiği para yeterli ise para üstünü yazdıran,
+        yeterli değilse verdiğiniz miktar yeterli değildir diye uyarak kodu ekleyiniz
+         */
         System.out.println("================= T120 - WISE MARKET =================");
         System.out.println("=====    Bizi Tercih Ettiğiniz İçin Teşekkür Ederiz     ======");
         System.out.println("----------      Alışveriş Bilgileriniz         -------------");
@@ -126,11 +218,19 @@ public class T120_WiseMarket {
         System.out.println("------------      İyi Günler Dileriz         --------------");
         LocalDateTime saat=LocalDateTime.now();
         System.out.println(saat);
-        cikis();
+        System.out.println("ana menüye dönmek için 0 tuşuna basınız. Çıkış yapmak için 5 tuşuna basınız");
+        if (urunKodu==0){
+            girisEkrani();
+        } else if (urunKodu==5) {
+            cikis();
+        }
+        //cikis();
     }
 
     public static void cikis() {
        // scan.close();
+        System.exit(0); // Çalışan Java kodunu durdurur.
+
     }
 
 
